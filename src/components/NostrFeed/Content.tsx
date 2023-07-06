@@ -7,11 +7,16 @@ function Content({ content }: ContentProps) {
     // Regular expression to check if the text is a valid image link
     const regex = /\.(gif|jpe?g|tiff?|png|webp|bmp|https?:\/\/tenor\.com\/.+\.gif)$/i;
 
+    return regex.test(text)
+  };
+
+    
+
+  const isYoutubeLink = (text:string) =>{
     // Regular expression to check if the text is a valid YouTube video link
     const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/i;
-
-    return regex.test(text) || youtubeRegex.test(text);
-  };
+    return youtubeRegex.test(text)
+  }
 
   const splitContent = (content: string) => {
     // Split the content by whitespace to identify individual words/links
@@ -23,12 +28,7 @@ function Content({ content }: ContentProps) {
     const renderedContent: JSX.Element[] = [];
 
     words.forEach((word:any, index) => {
-      if (isImageLink(word)) {
-        if (
-          word.match(
-            /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/i
-          )
-        ) {
+        if (isYoutubeLink(word)){
           // If the word is a YouTube video link, embed it as an iframe
           const videoId = word.match(/([a-zA-Z0-9_-]{11})$/i)[0];
           const embedUrl = `https://www.youtube.com/embed/${videoId}`;
@@ -44,7 +44,7 @@ function Content({ content }: ContentProps) {
               ></iframe>
             </div>
           );
-        } else {
+        } else if(isImageLink(word)) {
           // If the word is an image link, wrap it in an <img> tag
           renderedContent.push(
             <img
@@ -62,7 +62,7 @@ function Content({ content }: ContentProps) {
             />
           );
         }
-      } else {
+      else {
         // Otherwise, render the word as plain text
         renderedContent.push(
           <span className="nostr-text" key={index}>
