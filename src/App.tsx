@@ -1,6 +1,6 @@
 import './App.css'
 import SharePost from './components/SharePost/SharePost'
-import NostrFeed from './components/NostrFeed/NostrFeed'
+import NostrFeedList from './components/NostrFeed/NostrFeedList'
 import NostrTags from './components/NostrTags/NostrTags'
 
 
@@ -9,7 +9,7 @@ function App() {
     <>
      <div>
       <SharePost />
-      <NostrFeed />
+      <NostrFeedList />
       <NostrTags />
      </div>
     </>
