@@ -1,41 +1,42 @@
 import "./NostrFeed.css"
+import moment from "moment";
 
-interface Props {
+interface NostrFeedProps {
   content: string;
-  // user: {
-  //   name: string;
-  //   image: string;
-  //   pubkey: string;
-  // };
+  user: {
+    name: string;
+    image: string;
+    pubkey: string;
+  };
   created_at: number;
   hashtags: string[];
 }
 
 export default function NostrFeed({
   content,
-  // user,
+  user,
   created_at,
   hashtags,
-}: Props) {
+}: NostrFeedProps) {
   return (
     <div className="nostr_feed">
       <div className="nostr_feed_header">
         <img
-          src={"https://pbs.twimg.com/profile_images/1557656097409929216/x7JTvjC-_400x400.jpg"}
+          src={user.image}
           alt="note"
           className="avatar"
         />
         <div>
           <a
-            // href={`https://nostr.guru/p/${user.pubkey}`}
+            href={`https://nostr.guru/p/${user.pubkey}`}
             className="nostr_feed_title"
             target="_blank"
             rel="noreferrer"
           >
-            {/* {user.name} */} Tobi Ojuolape
+            {user.name}
           </a>
           <p className="nostr_feed_date">
-            {new Date(created_at * 1000).toISOString().split("T")[0]}
+            {moment(created_at*1000).startOf('hour').fromNow()}
           </p>
         </div>
       </div>
