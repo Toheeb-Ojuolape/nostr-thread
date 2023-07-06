@@ -40,7 +40,7 @@ function SharePost() {
     alert(input);
   };
   return (
-    <div>
+    <div style={{"padding":"20px"}}>
       <div className="sharePost">
         <img
           className="avatar"
