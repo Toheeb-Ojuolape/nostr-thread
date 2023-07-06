@@ -1,0 +1,30 @@
+.skeleton-loader {
+    background-color: #f0f0f0;
+    overflow: hidden;
+  }
+  
+  .skeleton-loader__content {
+    background-color: #ccc;
+    height: 100%;
+    animation: skeleton-loader-animation 0.9s infinite ease-in;
+  }
+  
+  @keyframes skeleton-loader-animation {
+    0% {
+      background:#f0f0f0
+    }
+    50% {
+      background:#ccc
+    }
+
+    100% {
+        background:#f0f0f0
+      }
+   
+  }
+  
+
+
+.skeleton-text>*{
+    margin:5px 0px
+}

@@ -1,0 +1,28 @@
+[
+    {
+      "name": "Bitcoin",
+      "id": 1,
+      "color": "#FFC107"
+    },
+    {
+      "name": "Lightning Network",
+      "id": 2,
+      "color": "#9C27B0"
+    },
+    {
+      "name": "Bitcoin Mining",
+      "id": 3,
+      "color": "#E91E63"
+    },
+    {
+      "name": "Bitcoin Wallet",
+      "id": 4,
+      "color": "#2196F3"
+    },
+    {
+      "name": "Lightning Payments",
+      "id": 5,
+      "color": "#4CAF50"
+    }
+  ]
+  
