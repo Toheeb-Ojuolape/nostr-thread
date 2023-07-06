@@ -56,7 +56,7 @@ function App() {
     const sub = pool.sub(RELAYS, [
       {
         kinds: [1],
-        limit: 100,
+        limit: 20,
         "#t": ['bitcoin','sphinx'],
       },
     ]);
