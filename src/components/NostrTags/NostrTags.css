@@ -1,0 +1,92 @@
+span {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #96a1a9;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .nostr-tag-list {
+        background: #f7f9f9;
+        padding: 15px 0px;
+        border-radius: 15px;
+      }
+    
+    
+      .nostr-tag {
+        padding: 12px 16px;
+        border-radius: 30px;
+        margin: 0px 0px 9px 0px;
+        font-size: 14px;
+        border: none;
+      }
+    
+      .nostr-tag-item:hover {
+        background: rgba(164, 164, 164, 0.53);
+        cursor: pointer;
+      }
+}
+
+@media only screen and (min-width: 600px) {
+    .nostr-tag-list {
+        background: #f7f9f9;
+        padding: 15px 0px;
+        border-radius: 15px;
+      }
+    
+    
+      .nostr-tag {
+        padding: 12px 16px;
+        border-radius: 30px;
+        margin: 0px 0px 9px 0px;
+        font-size: 14px;
+        border: none;
+      }
+    
+      .nostr-tag-item:hover {
+        background: rgba(164, 164, 164, 0.53);
+        cursor: pointer;
+      }
+}
+
+@media only screen and (min-width: 768px) {
+  .nostr-tag-list {
+    background: #f7f9f9;
+    padding: 15px 0px;
+    border-radius: 15px;
+    width: 350px;
+  }
+
+
+  .nostr-tag {
+    padding: 12px 16px;
+    border-radius: 30px;
+    margin: 0px 0px 9px 0px;
+    font-size: 14px;
+    border: none;
+  }
+
+  .nostr-tag-item{
+    background:none;
+    transition:background-color 0.3s ease-in-out
+  }
+
+  .nostr-tag-item:hover {
+    background-color: rgba(164, 164, 164, 0.128);
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 894px) {
+}
+
+@media only screen and (min-width: 996px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}

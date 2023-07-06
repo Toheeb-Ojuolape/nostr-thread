@@ -7,10 +7,14 @@ import NostrTags from './components/NostrTags/NostrTags'
 function App() {
   return (
     <>
-     <div>
+     <div className="nostr-container">
+      <div className="nostr-feeds">
       <SharePost />
       <NostrFeedList />
-      <NostrTags />
+      </div>
+      <div>
+        <NostrTags />
+      </div>
      </div>
     </>
   )
