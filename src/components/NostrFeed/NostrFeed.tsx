@@ -1,3 +1,4 @@
+import Content from "./Content";
 import "./NostrFeed.css"
 import moment from "moment";
 
@@ -40,7 +41,7 @@ export default function NostrFeed({
           </p>
         </div>
       </div>
-      <p>{content}</p>
+      <Content content={content}/>
       <ul className="nostr_tags">
         {hashtags
           .filter((t) => hashtags.indexOf(t) === hashtags.lastIndexOf(t))
