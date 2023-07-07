@@ -2,27 +2,46 @@
     {
       "name": "Bitcoin",
       "id": 1,
-      "color": "#FFC107"
+      "color": "#FFC107",
+      "slug":"bitcoin"
     },
     {
       "name": "Lightning Network",
       "id": 2,
-      "color": "#9C27B0"
+      "color": "#9C27B0",
+      "slug":"lightning"
     },
     {
       "name": "Bitcoin Mining",
       "id": 3,
-      "color": "#E91E63"
+      "color": "#E91E63",
+      "slug":"mining"
     },
     {
       "name": "Bitcoin Wallet",
       "id": 4,
-      "color": "#2196F3"
+      "color": "#2196F3",
+      "slug":"wallet"
     },
     {
       "name": "Lightning Payments",
       "id": 5,
-      "color": "#4CAF50"
+      "color": "#4CAF50",
+      "slug":"payments"
+    },
+
+    {
+      "name": "Decentralized",
+      "id": 6,
+      "color": "#4CAF50",
+      "slug":"decentralized"
+    },
+
+    {
+      "name": "Web5",
+      "id": 7,
+      "color": "#4CAF50",
+      "slug":"web5"
     }
   ]
   

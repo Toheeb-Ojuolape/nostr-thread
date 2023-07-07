@@ -32,6 +32,7 @@ function App() {
   const [events] = useDebounce(eventsImmediate, 1500);
 
   const [users, setUsers] = useState<Record<string, User>>({});
+  const [tags,setTags] = useState(['bitcoin','sphinx'])
   const [loading,setLoading] = useState(true)
 
   const feedsFetched = useRef<Record<string, boolean>>({});
@@ -57,7 +58,7 @@ function App() {
       {
         kinds: [1],
         limit: 20,
-        "#t": ['bitcoin','sphinx'],
+        "#t": tags,
       },
     ]);
 
@@ -68,7 +69,7 @@ function App() {
     return () => {
       sub.unsub();
     };
-  }, [ pool]);
+  }, [tags,pool]);
 
   useEffect(() => {
     if (!pool) return;
@@ -108,6 +109,12 @@ function App() {
   if (!pool) return null;
 
 
+  const setNewTag = (e:string) =>{
+    setTags([e]) 
+    setLoading(true)
+  }
+
+
   return (
     <>
      <div className="nostr-container">
@@ -120,7 +127,7 @@ function App() {
       <NostrFeedList users={users} feeds={events}/>
       </div>
       <div>
-        <NostrTags/>
+        <NostrTags setTags={(e:string)=>setNewTag(e)}/>
       </div>
      </div>
     </>
