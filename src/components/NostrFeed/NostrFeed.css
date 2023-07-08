@@ -80,3 +80,12 @@ a:hover{
 .video-embed{
   margin:10px 0px
 }
+
+
+.mediaframe{
+ max-width: 500px;
+ width:100%;
+ cursor: pointer;
+ margin: "5px 0px";
+ object-fit: "cover"
+}
