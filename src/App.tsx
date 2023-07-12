@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { insertEventIntoDescendingList } from './helpers/helper';
 import NostrSkeletonList from './components/Loader/NostrSkeleton';
-
+import { Toaster } from 'react-hot-toast';
 
 
 export const RELAYS = [
@@ -119,7 +119,7 @@ function App() {
     <>
      <div className="nostr-container">
       <div className="nostr-feeds">
-      <SharePost />
+      <SharePost hashtags={tags} pool={pool}/>
 
       {/* loading state to show before feeds */}
       <NostrSkeletonList isLoading={loading}/>
@@ -130,6 +130,7 @@ function App() {
         <NostrTags setTags={(e:string)=>setNewTag(e)}/>
       </div>
      </div>
+     <Toaster/>
     </>
   )
 }
