@@ -1,21 +1,7 @@
 import SkeletonLoader from "./Skeleton"
 import feeds from "../../data/feeds.json"
+import { SkeletonFeed,NostrSkeletonListProps} from "../../types/interfaces"
 
-
-
-interface Tag{
-    name:string,
-    color:string,
-    id:number
-  }
-
-interface SkeletonFeed {
-    feed:Tag
-}
-
-interface NostrSkeletonListProps{
-    isLoading:boolean
-}
 
 function NostrSkeleton({}:SkeletonFeed) {
   return (

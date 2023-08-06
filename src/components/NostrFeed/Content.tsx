@@ -1,6 +1,4 @@
-interface ContentProps {
-  content: string;
-}
+import { ContentProps } from "../../types/interfaces";
 
 function Content({ content }: ContentProps) {
   const isImageLink = (text: string) => {

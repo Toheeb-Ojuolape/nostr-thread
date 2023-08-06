@@ -8,7 +8,8 @@ import { useDebounce } from "use-debounce";
 import { insertEventIntoDescendingList } from './helpers/helper';
 import NostrSkeletonList from './components/Loader/NostrSkeleton';
 import { Toaster } from 'react-hot-toast';
-
+import NostrTagMobile from './components/NostrTags/NostrTagMobile';
+import { User } from './types/interfaces';
 
 export const RELAYS = [
   "wss://nostr-pub.wellorder.net",
@@ -16,13 +17,6 @@ export const RELAYS = [
   "wss://nostr.swiss-enigma.ch",
   "wss://relay.damus.io",
 ];
-
-export interface User {
-  name?: string;
-  about?: string;
-  picture?: string;
-  nip05?: string;
-}
 
 function App() {
   const [pool, setPool] = useState<SimplePool | null>(null);
@@ -122,6 +116,11 @@ function App() {
       <SharePost hashtags={tags} pool={pool}/>
 
       {/* loading state to show before feeds */}
+      {/* Mobile Tags */}
+      <div>
+        <NostrTagMobile setTags={(e:string)=>setNewTag(e)}/>
+      </div>
+
       <NostrSkeletonList isLoading={loading}/>
 
       <NostrFeedList users={users} feeds={events}/>

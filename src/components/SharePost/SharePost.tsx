@@ -1,27 +1,10 @@
-import { FormEventHandler, useState } from "react";
+import { useState } from "react";
 import "./SharePost.css";
-import { EventTemplate, Event, getEventHash, SimplePool } from "nostr-tools";
+import { EventTemplate, Event, getEventHash } from "nostr-tools";
 import { RELAYS } from "../../App";
 import { toast } from "react-hot-toast";
+import { InputProps,ButtonProps,SharePostProps } from "../../types/interfaces";
 
-interface InputProps {
-  input: string;
-  setInput: Function;
-  hashtags: string[];
-  pool: SimplePool;
-  onSubmit: FormEventHandler;
-}
-
-interface ButtonProps {
-  title: String;
-  isActive: boolean;
-  onClick: Function;
-}
-
-interface SharePostProps {
-  pool: SimplePool;
-  hashtags: string[];
-}
 
 const Input = ({ setInput, onSubmit, input }: InputProps) => {
   return (

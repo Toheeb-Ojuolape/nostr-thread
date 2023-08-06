@@ -1,11 +1,7 @@
 import './SkeletonLoader.css'; // Import CSS file for styling
+import { SkeletonProps } from '../../types/interfaces';
 
 
-interface SkeletonProps{
-    width:string,
-    height:string,
-    border:string
-}
 
 const SkeletonLoader = ({width,height,border}:SkeletonProps) => {
   return (

@@ -1,11 +1,6 @@
-import { User } from "../../App";
 import NostrFeed from "./NostrFeed";
-import { Event,nip19 } from "nostr-tools";
-
-interface FeedsProps {
-  feeds: Event[];
-  users: Record<string, User>;
-}
+import { nip19 } from "nostr-tools";
+import { FeedsProps } from "../../types/interfaces";
 
 function NostrFeedList({ feeds, users }: FeedsProps) {
   return (

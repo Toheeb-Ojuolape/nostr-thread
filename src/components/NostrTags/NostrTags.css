@@ -30,6 +30,40 @@ h3 {
         background: rgba(164, 164, 164, 0.53);
         cursor: pointer;
       }
+
+      .tag-mobile{
+        display:flex;
+        overflow-x: scroll;
+        white-space: nowrap;
+        padding:15px 0px
+      }
+      .tag-chip:nth-child(odd){
+        border:1px solid #8ecdf7;
+        padding:10px;
+        margin:0px 5px;
+        border-radius:30px;
+        color:#8ecdf7;
+        cursor: pointer;
+      }
+
+      .tag-chip:nth-child(even){
+        background:#8ecdf7;
+        padding:10px;
+        margin:0px 5px;
+        border-radius:30px;
+        color:white;
+        cursor: pointer;
+      }
+
+      .tag-chip:hover{
+        background:#1d9bf0;
+        color:white
+      }
+
+      .tag-chip:active{
+        background:#1d9bf0;
+        color:white
+      }
 }
 
 @media only screen and (min-width: 600px) {
@@ -52,6 +86,42 @@ h3 {
         background: rgba(164, 164, 164, 0.53);
         cursor: pointer;
       }
+
+      .tag-mobile{
+        display:flex;
+        overflow-x: scroll;
+        white-space: nowrap;
+        padding:15px 0px
+      }
+
+      .tag-chip:nth-child(odd){
+        border:1px solid #8ecdf7;
+        padding:10px;
+        margin:0px 5px;
+        border-radius:30px;
+        color:#8ecdf7;
+        cursor: pointer;
+      }
+
+      .tag-chip:nth-child(even){
+        background:#8ecdf7;
+        padding:10px;
+        margin:0px 5px;
+        border-radius:30px;
+        color:white;
+        cursor: pointer;
+      }
+
+      .tag-chip:hover{
+        background:#1d9bf0;
+        color:white
+      }
+
+      .tag-chip:active{
+        background:#1d9bf0;
+        color:white
+      }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -90,3 +160,12 @@ h3 {
 
 @media only screen and (min-width: 1024px) {
 }
+
+
+@media only screen and (max-width: 1024px) {
+  .hidden-mobile{
+    display:none
+  }
+}
+
+
