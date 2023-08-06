@@ -1,17 +1,7 @@
 import Content from "./Content";
 import "./NostrFeed.css"
 import moment from "moment";
-
-interface NostrFeedProps {
-  content: string;
-  user: {
-    name: string;
-    image: string;
-    pubkey: string;
-  };
-  created_at: number;
-  hashtags: string[];
-}
+import { NostrFeedProps } from "../../types/interfaces";
 
 export default function NostrFeed({
   content,

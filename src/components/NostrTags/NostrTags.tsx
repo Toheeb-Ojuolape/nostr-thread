@@ -1,21 +1,6 @@
 import tags from "../../data/tags.json"
 import "./NostrTags.css"
-
-interface Tag{
-  name:string,
-  color:string,
-  id:number,
-  slug:string
-}
-
-interface TagProps{
-  tag:Tag,
-  setTags:Function
-}
-
-interface NostrTags{
-  setTags:Function
-}
+import { TagProps,NostrTags } from "../../types/interfaces"
 
 const Tag = ({tag,setTags}:TagProps) => {
   return (
@@ -31,7 +16,7 @@ const Tag = ({tag,setTags}:TagProps) => {
 
 function NostrTags({setTags}:NostrTags) {
   return (
-    <div className="nostr-tag-list">
+    <div className="hidden-mobile nostr-tag-list">
       <h3 style={{padding:"5px 15px"}}>Trends for You</h3>
       <div className="grid">
       {
