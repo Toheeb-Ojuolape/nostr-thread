@@ -89,3 +89,8 @@ a:hover{
  margin: "5px 0px";
  object-fit: "cover"
 }
+
+
+.nostr_tag{
+  cursor: pointer;
+}

@@ -2,7 +2,7 @@ import NostrFeed from "./NostrFeed";
 import { nip19 } from "nostr-tools";
 import { FeedsProps } from "../../types/interfaces";
 
-function NostrFeedList({ feeds, users }: FeedsProps) {
+function NostrFeedList({ feeds, users,setTag }: FeedsProps) {
   return (
     <div className="nostr-feed-list">
       {feeds.map((feed,i) => (
@@ -20,6 +20,7 @@ function NostrFeedList({ feeds, users }: FeedsProps) {
               `https://api.dicebear.com/5.x/identicon/svg?seed=${feed.pubkey}`,
             pubkey: feed.pubkey,
           }}
+          setTag={setTag}
         />
       ))}
     </div>

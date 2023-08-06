@@ -104,8 +104,9 @@ function App() {
 
 
   const setNewTag = (e:string) =>{
-    setTags([e]) 
     setLoading(true)
+    window.scrollTo(0,0)
+    setTags([e]) 
   }
 
 
@@ -123,7 +124,7 @@ function App() {
 
       <NostrSkeletonList isLoading={loading}/>
 
-      <NostrFeedList users={users} feeds={events}/>
+      <NostrFeedList users={users} feeds={events} setTag={(e:string)=>setNewTag(e)}/>
       </div>
       <div>
         <NostrTags setTags={(e:string)=>setNewTag(e)}/>
