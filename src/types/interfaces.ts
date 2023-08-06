@@ -72,9 +72,11 @@ export interface NostrFeedProps {
   };
   created_at: number;
   hashtags: string[];
+  setTag: Function
 }
 
 export interface FeedsProps {
   feeds: Event[];
   users: Record<string, User>;
+  setTag: Function
 }

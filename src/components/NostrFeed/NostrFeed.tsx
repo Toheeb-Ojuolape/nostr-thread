@@ -8,6 +8,7 @@ export default function NostrFeed({
   user,
   created_at,
   hashtags,
+  setTag,
 }: NostrFeedProps) {
   return (
     <div className="nostr_feed">
@@ -39,6 +40,7 @@ export default function NostrFeed({
             <li
               key={hashtag}
               className="nostr_tag"
+              onClick={()=>setTag(hashtag)}
             >
               #{hashtag}
             </li>
