@@ -1,15 +1,16 @@
-import './App.css'
-import SharePost from './components/SharePost/SharePost'
-import NostrFeedList from './components/NostrFeed/NostrFeedList'
-import NostrTags from './components/NostrTags/NostrTags'
+import "./App.css";
+import SharePost from "./components/SharePost/SharePost";
+import NostrFeedList from "./components/NostrFeed/NostrFeedList";
+import NostrTags from "./components/NostrTags/NostrTags";
 import { SimplePool, Event } from "nostr-tools";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useDebounce } from "use-debounce";
-import { insertEventIntoDescendingList } from './helpers/helper';
-import NostrSkeletonList from './components/Loader/NostrSkeleton';
-import { Toaster } from 'react-hot-toast';
-import NostrTagMobile from './components/NostrTags/NostrTagMobile';
-import { User } from './types/interfaces';
+import { insertEventIntoDescendingList } from "./helpers/helper";
+import NostrSkeletonList from "./components/Loader/NostrSkeleton";
+import { Toaster } from "react-hot-toast";
+import NostrTagMobile from "./components/NostrTags/NostrTagMobile";
+import { User } from "./types/interfaces";
+import { requestProvider } from "webln";
 
 export const RELAYS = [
   "wss://nostr-pub.wellorder.net",
@@ -26,24 +27,27 @@ function App() {
   const [events] = useDebounce(eventsImmediate, 1500);
 
   const [users, setUsers] = useState<Record<string, User>>({});
-  const [tags,setTags] = useState(['bitcoin','sphinx'])
-  const [loading,setLoading] = useState(true)
-
+  const [tags, setTags] = useState(["bitcoin", "sphinx"]);
+  const [loading, setLoading] = useState(true);
   const feedsFetched = useRef<Record<string, boolean>>({});
+  const fetchUser = useRef(false);
 
+  // setup a relays pool
 
-    // setup a relays pool
+  const requestPermission = useCallback(async () => {
+    await requestProvider()
+  }, []);
 
-    useEffect(() => {
-      const _pool = new SimplePool();
-      setPool(_pool);
-  
-      return () => {
-        _pool.close(RELAYS);
-      };
-    }, []);
+  useEffect(() => {
+    const _pool = new SimplePool();
+    setPool(_pool);
 
-     // subscribe to some events
+    return () => {
+      _pool.close(RELAYS);
+    };
+  }, []);
+
+  // subscribe to some events
   useEffect(() => {
     if (!pool) return;
 
@@ -63,7 +67,7 @@ function App() {
     return () => {
       sub.unsub();
     };
-  }, [tags,pool]);
+  }, [tags, pool]);
 
   useEffect(() => {
     if (!pool) return;
@@ -72,9 +76,7 @@ function App() {
       .filter((event) => feedsFetched.current[event.pubkey] !== true)
       .map((event) => event.pubkey);
 
-    pubkeysToFetch.forEach(
-      (pubkey) => (feedsFetched.current[pubkey] = true)
-    );
+    pubkeysToFetch.forEach((pubkey) => (feedsFetched.current[pubkey] = true));
 
     const sub = pool.sub(RELAYS, [
       {
@@ -90,11 +92,15 @@ function App() {
         ...cur,
         [event.pubkey]: metadata,
       }));
-      setLoading(false)
+      setLoading(false);
     });
 
     sub.on("eose", () => {
       sub.unsub();
+      if (!fetchUser.current) {
+        fetchUser.current = true;
+        requestPermission();
+      }
     });
 
     return () => {};
@@ -102,37 +108,39 @@ function App() {
 
   if (!pool) return null;
 
-
-  const setNewTag = (e:string) =>{
-    setLoading(true)
-    window.scrollTo(0,0)
-    setTags([e]) 
-  }
-
+  const setNewTag = async (e: string) => {
+    setLoading(true);
+    window.scrollTo(0, 0);
+    setTags([e])
+  };
 
   return (
     <>
-     <div className="nostr-container">
-      <div className="nostr-feeds">
-      <SharePost hashtags={tags} pool={pool}/>
+      <div className="nostr-container">
+        <div className="nostr-feeds">
+          <SharePost hashtags={tags} pool={pool} />
 
-      {/* loading state to show before feeds */}
-      {/* Mobile Tags */}
-      <div>
-        <NostrTagMobile setTags={(e:string)=>setNewTag(e)}/>
-      </div>
+          {/* loading state to show before feeds */}
+          {/* Mobile Tags */}
+          <div>
+            <NostrTagMobile setTags={(e: string) => setNewTag(e)} />
+          </div>
 
-      <NostrSkeletonList isLoading={loading}/>
+          <NostrSkeletonList isLoading={loading} />
 
-      <NostrFeedList users={users} feeds={events} setTag={(e:string)=>setNewTag(e)}/>
+          <NostrFeedList
+            users={users}
+            feeds={events}
+            setTag={(e: string) => setNewTag(e)}
+          />
+        </div>
+        <div>
+          <NostrTags setTags={(e: string) => setNewTag(e)} />
+        </div>
       </div>
-      <div>
-        <NostrTags setTags={(e:string)=>setNewTag(e)}/>
-      </div>
-     </div>
-     <Toaster/>
+      <Toaster />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
