@@ -7,4 +7,4 @@
 - [x] add horizontal scroll to tags in mobile view
 - [ ] view post on single page and share post link
 - [x] post new content
-- [ ] add login with wallet flow at the point of visiting the project
+- [x] add login with wallet flow at the point of visiting the project

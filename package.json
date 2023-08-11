@@ -15,7 +15,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "use-debounce": "^9.0.4"
+    "use-debounce": "^9.0.4",
+    "webln": "^0.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

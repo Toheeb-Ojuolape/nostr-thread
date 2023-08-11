@@ -4,6 +4,7 @@ import { EventTemplate, Event, getEventHash } from "nostr-tools";
 import { RELAYS } from "../../App";
 import { toast } from "react-hot-toast";
 import { InputProps,ButtonProps,SharePostProps } from "../../types/interfaces";
+import avatar from "../../assets/identicon.svg"
 
 
 const Input = ({ setInput, onSubmit, input }: InputProps) => {
@@ -119,7 +120,7 @@ function SharePost({ hashtags, pool }: SharePostProps) {
       <div className="sharePost">
         <img
           className="avatar"
-          src="https://pbs.twimg.com/profile_images/1557656097409929216/x7JTvjC-_400x400.jpg"
+          src={avatar}
         />
         <Input
           input={input}
